@@ -1,4 +1,5 @@
 import 'package:netlfix_clone/common/utils.dart';
+import 'package:netlfix_clone/model/SearchMovie.dart';
 import 'package:netlfix_clone/model/movie_detail.dart';
 import 'package:netlfix_clone/model/movie_recommendation.dart';
 import 'package:netlfix_clone/model/popular_tv_series.dart';
@@ -116,6 +117,24 @@ class ApiServices {
       final response = await http.get(Uri.parse(apiUrl));
       if(response.statusCode == 200){
         return movieRecommendationFromJson(response.body);
+      }else{
+        throw Exception("Failed to load movies");
+      }
+    }catch(e) {
+      print("Error fetching movies:$e");
+      return null;
+    }
+  }
+
+  Future<SearchMovie?> searchMovie(String query) async{
+    try{
+      final endPoint = "search/movie?query=$query";
+      final apiUrl = "$baseUrl$endPoint";
+      final response = await http.get(Uri.parse(apiUrl),headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YmJhZWI4YWM2MGUyOTU5MDM4N2M4YzU3ZWI1Y2YyMCIsIm5iZiI6MTc3MDQ5OTM1NS42ODMsInN1YiI6IjY5ODdhZDFiN2Y4YzdlYmRhNThlNjhkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NVHVoOQHP4paBAjKRmgxYX0FeVTEV4zIBaRVHm9eE9s"
+      });
+      if(response.statusCode == 200){
+        return searchMovieFromJson(response.body);
       }else{
         throw Exception("Failed to load movies");
       }

@@ -6,6 +6,7 @@ import 'package:netlfix_clone/model/top_rated_movies.dart';
 import 'package:netlfix_clone/model/trending_movies.dart';
 import 'package:netlfix_clone/model/upcoming_movies.dart';
 import 'package:netlfix_clone/screen/movie_detailed_screen.dart';
+import 'package:netlfix_clone/screen/search_screen.dart';
 import 'package:netlfix_clone/services/api_services.dart';
 
 import '../model/movie_model.dart';
@@ -51,7 +52,9 @@ class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
                   Image.asset("assets/logo.png", height: 50),
                   Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder:(context) => SearchScreen()));
+                    },
                     icon: Icon(Icons.search, size: 27, color: Colors.white),
                   ),
                   Icon(Icons.download_sharp, size: 27, color: Colors.white),

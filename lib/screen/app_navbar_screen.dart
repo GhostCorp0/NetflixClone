@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:netlfix_clone/screen/netflix_home_screen.dart';
+import 'package:netlfix_clone/screen/search_screen.dart';
 
 class AppNavbarScreen extends StatefulWidget {
   const AppNavbarScreen({super.key});
@@ -31,7 +32,7 @@ class _AppNavbarScreenState extends State<AppNavbarScreen> {
         ),
         body: TabBarView(children: [
           NetflixHomeScreen(),
-          Scaffold(),
+          SearchScreen(),
           Scaffold()
         ]),
       ),
