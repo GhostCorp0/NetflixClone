@@ -132,7 +132,7 @@ class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
                                 final movie = movies[index];
                                 return GestureDetector(
                                   onTap: () {
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>

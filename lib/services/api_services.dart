@@ -1,5 +1,6 @@
 import 'package:netlfix_clone/common/utils.dart';
 import 'package:netlfix_clone/model/movie_detail.dart';
+import 'package:netlfix_clone/model/movie_recommendation.dart';
 import 'package:netlfix_clone/model/popular_tv_series.dart';
 import 'package:netlfix_clone/model/top_rated_movies.dart';
 import 'package:netlfix_clone/model/trending_movies.dart';
@@ -99,6 +100,22 @@ class ApiServices {
       final response = await http.get(Uri.parse(apiUrl));
       if(response.statusCode == 200){
         return movieDetailFromJson(response.body);
+      }else{
+        throw Exception("Failed to load movies");
+      }
+    }catch(e) {
+      print("Error fetching movies:$e");
+      return null;
+    }
+  }
+
+  Future<MovieRecommendation?> movieRecommendation(int movieId) async{
+    try{
+      final endPoint = "movie/$movieId/recommendations";
+      final apiUrl = "$baseUrl$endPoint$key";
+      final response = await http.get(Uri.parse(apiUrl));
+      if(response.statusCode == 200){
+        return movieRecommendationFromJson(response.body);
       }else{
         throw Exception("Failed to load movies");
       }
