@@ -94,7 +94,7 @@ class Result {
     backdropPath: json["backdrop_path"],
     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
     id: json["id"],
-    originalLanguage: originalLanguageValues.map[json["original_language"]]!,
+    originalLanguage: originalLanguageValues.map[json["original_language"]] ?? OriginalLanguage.OTHER,
     originalTitle: json["original_title"],
     overview: json["overview"],
     popularity: json["popularity"]?.toDouble(),
@@ -127,13 +127,31 @@ class Result {
 enum OriginalLanguage {
   EN,
   JA,
-  ZH
+  ZH,
+  TR,
+  FR,
+  ES,
+  DE,
+  KO,
+  PT,
+  IT,
+  RU,
+  OTHER
 }
 
 final originalLanguageValues = EnumValues({
   "en": OriginalLanguage.EN,
   "ja": OriginalLanguage.JA,
-  "zh": OriginalLanguage.ZH
+  "zh": OriginalLanguage.ZH,
+  "tr": OriginalLanguage.TR,
+  "fr": OriginalLanguage.FR,
+  "es": OriginalLanguage.ES,
+  "de": OriginalLanguage.DE,
+  "ko": OriginalLanguage.KO,
+  "pt": OriginalLanguage.PT,
+  "it": OriginalLanguage.IT,
+  "ru": OriginalLanguage.RU,
+  "other": OriginalLanguage.OTHER,
 });
 
 class EnumValues<T> {
