@@ -3,6 +3,7 @@ import 'package:netlfix_clone/model/SearchMovie.dart';
 import 'package:netlfix_clone/model/movie_detail.dart';
 import 'package:netlfix_clone/model/movie_recommendation.dart';
 import 'package:netlfix_clone/model/popular_tv_series.dart';
+import 'package:netlfix_clone/model/tmdb_trending.dart';
 import 'package:netlfix_clone/model/top_rated_movies.dart';
 import 'package:netlfix_clone/model/trending_movies.dart';
 import 'package:netlfix_clone/model/upcoming_movies.dart';
@@ -135,6 +136,22 @@ class ApiServices {
       });
       if(response.statusCode == 200){
         return searchMovieFromJson(response.body);
+      }else{
+        throw Exception("Failed to load movies");
+      }
+    }catch(e) {
+      print("Error fetching movies:$e");
+      return null;
+    }
+  }
+
+  Future<TmdbTrending?> tmdbTrending() async{
+    try{
+      final endPoint = "trending/all/day";
+      final apiUrl = "$baseUrl$endPoint$key";
+      final response = await http.get(Uri.parse(apiUrl));
+      if(response.statusCode == 200){
+        return tmdbTrendingFromJson(response.body);
       }else{
         throw Exception("Failed to load movies");
       }

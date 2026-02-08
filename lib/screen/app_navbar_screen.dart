@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:netlfix_clone/screen/hot_news.dart';
 import 'package:netlfix_clone/screen/netflix_home_screen.dart';
 import 'package:netlfix_clone/screen/search_screen.dart';
 
@@ -33,7 +34,7 @@ class _AppNavbarScreenState extends State<AppNavbarScreen> {
         body: TabBarView(children: [
           NetflixHomeScreen(),
           SearchScreen(),
-          Scaffold()
+          HotNews()
         ]),
       ),
     );
