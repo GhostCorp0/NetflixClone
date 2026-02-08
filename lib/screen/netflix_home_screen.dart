@@ -19,6 +19,7 @@ class NetflixHomeScreen extends StatefulWidget {
 }
 
 class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
+  final ScrollController _scrollController = ScrollController();
   final ApiServices apiServices = ApiServices();
   late Future<Movie?> movieData;
   late Future<UpcomingMovies?> upcomingMovies;
@@ -41,6 +42,7 @@ class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -68,7 +70,13 @@ class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
               child: Row(
                 children: [
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _scrollController.animateTo(
+                        700,
+                        duration: Duration(microseconds: 100),
+                        curve:Curves.bounceIn
+                      );
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                       side: BorderSide(color: Colors.white38),
@@ -80,7 +88,31 @@ class _NetflixHomeScreenState extends State<NetflixHomeScreen> {
                   ),
                   SizedBox(width: 8),
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _scrollController.animateTo(
+                          700,
+                          duration: Duration(microseconds: 100),
+                          curve:Curves.bounceIn
+                      );
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(color: Colors.white38),
+                    ),
+                    child: Text(
+                      "Movies",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  MaterialButton(
+                    onPressed: () {
+                      _scrollController.animateTo(
+                          300,
+                          duration: Duration(microseconds: 100),
+                          curve:Curves.bounceIn
+                      );
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                       side: BorderSide(color: Colors.white38),
