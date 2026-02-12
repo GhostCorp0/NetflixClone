@@ -1,4 +1,4 @@
-# netlfix_clone
+# Netflix Clone
 
 A netflix clone
 
